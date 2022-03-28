@@ -26,7 +26,6 @@ runs:
         installer-parallel: true
 
     - name: Load cached venv if exists
-      shell: bash
       id: cached-poetry-dependencies
       uses: actions/cache@v2
       with:
