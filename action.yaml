@@ -26,6 +26,7 @@ runs:
         installer-parallel: true
 
     - name: Load cached venv if exists
+      shell: bash
       id: cached-poetry-dependencies
       uses: actions/cache@v2
       with:
@@ -33,6 +34,7 @@ runs:
         key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/${{inputs.service_name}}/poetry.lock') }}
 
     - name: Install dependencies if there're no cached dependencies
+      shell: bash
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: |
         cd ./${{inputs.service_name}}
